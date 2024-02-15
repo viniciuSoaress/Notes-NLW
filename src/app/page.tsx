@@ -20,10 +20,7 @@ export default function Home() {
 
         <NewNoteCard />
 
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
+        <NoteCard note={{content: 'hello, world!', date: new Date()}}/>
       </div>
     </main>
   );
