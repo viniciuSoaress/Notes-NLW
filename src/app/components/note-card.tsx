@@ -12,7 +12,6 @@ type NoteCardProps = {
     date: Date,
     content: string
   }
-
 }
 
 export function NoteCard({ note }: NoteCardProps) {
@@ -32,7 +31,7 @@ export function NoteCard({ note }: NoteCardProps) {
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-black/0 pointer-events-none" />
       </DialogTrigger>
 
-      <DialogContent className="bg-slate-700 h-[60vh] pb-0">
+      <DialogContent className="flex flex-col bg-slate-700 h-[60vh] p-0">
         <div className="flex flex-1 flex-col gap-3 p-5">
           <span className="text-sm font-medium text-slate-300">
             {formatDistanceToNow(note.date, { locale: ptBR, addSuffix: true})}
@@ -45,7 +44,7 @@ export function NoteCard({ note }: NoteCardProps) {
 
         <button
          type="button"
-         className="w-full h-min bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none mt-72 rounded font-medium group"
+         className="w-full h-min bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none  rounded font-medium group"
         >
           Deseja <span className="text-red-400 group-hover:underline">apagar essa nota</span>?
         </button>
