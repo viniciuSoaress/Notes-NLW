@@ -2,6 +2,7 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogClose
 } from "./ui/dialog"
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from "date-fns/locale"
@@ -42,12 +43,12 @@ export function NoteCard({ note }: NoteCardProps) {
           </p>
         </div>
 
-        <button
+        <DialogClose
          type="button"
          className="w-full h-min bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none  rounded font-medium group"
         >
           Deseja <span className="text-red-400 group-hover:underline">apagar essa nota</span>?
-        </button>
+        </DialogClose>
       </DialogContent>
 
     </Dialog>

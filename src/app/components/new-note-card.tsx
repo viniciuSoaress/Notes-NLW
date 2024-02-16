@@ -6,12 +6,15 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogClose
 } from "./ui/dialog"
 import { useToast } from './ui/use-toast'
 
+type NewNoteCardProps = {
+  onNoteCreated: (content: string) => void
+}
 
-
-export function NewNoteCard() {
+export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
   const { toast } = useToast()
 
 
@@ -32,9 +35,18 @@ export function NewNoteCard() {
 
   function handleSaveNoteSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    toast({
-      title: "Nota criada com sucesso!",
-    })
+    if (content != '') {
+      onNoteCreated(content)
+      toast({
+        title: "Nota criada com sucesso!",
+      })
+    } else {
+      toast({
+        title: "Nota não pode ser vasia!",
+      })
+    }
+    setContent('')
+    setShoutShowOnboarding(true)
   }
 
   return (
@@ -64,6 +76,7 @@ export function NewNoteCard() {
               </p>
             ) : (
               <textarea
+                value={content}
                 autoFocus
                 className='text-sm leading-6 text-slate-400 bg-transparent resize-none flex-1 outline-none'
                 onChange={handleContentChange}
@@ -71,12 +84,12 @@ export function NewNoteCard() {
             )}
           </div>
 
-          <button
+          <DialogClose
             type="submit"
             className="w-full h-min bg-lime-400  py-4 text-center text-sm text-lime-950 outline-none rounded font-medium hover:bg-lime-500"
           >
             Salvar nota
-          </button>
+          </DialogClose>
 
         </form>
       </DialogContent>
